@@ -1,0 +1,13 @@
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+
+# Restricted/private source files
+data/private/*.csv
+data/private/*.txt
+!data/private/gender_lookup.example.csv
+
+# Generated outputs
+outputs/
+figures/
