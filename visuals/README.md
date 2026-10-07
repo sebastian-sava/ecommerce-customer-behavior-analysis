@@ -1,33 +1,15 @@
 # Visuals
 
-I would keep the public README visually simple.
+The three SVG files in this folder are **portfolio-safe synthetic illustrations**.
 
-## Include now
+They reproduce the types of charts used in the original analysis:
 
-The Mermaid workflow diagram in the main README is safe to publish because it shows the analysis process rather than restricted company results.
+- conversion rate by device type;
+- conversion rate by season;
+- purchase rate by short-window revisit behaviour.
 
-## Add once a synthetic dataset is available
+The original retail data and company-specific results are restricted, so the values shown in these charts are not the original study outputs.
 
-These are the three result visuals I would prioritise:
+The synthetic values are stored in `../data/synthetic_visual_values.csv`, and `../analysis/02_generate_synthetic_visuals.R` recreates the charts.
 
-1. **Conversion rate by device type**  
-   A simple bar chart. This is easy to read and directly connects browsing behaviour to a practical UX question.
-
-2. **Conversion rate by season**  
-   Useful for separating traffic volume from conversion efficiency and showing the role of seasonality.
-
-3. **Purchase rate by short-window revisit behaviour**  
-   Shows how a behavioural feature was constructed and tested, and is more interesting than a generic demographic chart.
-
-An optional fourth visual is a **daily purchases over time** line chart to show the seasonal shape before moving into the statistical tests.
-
-## Do not lead with
-
-- Mahalanobis-distance plots;
-- raw regression coefficient tables;
-- the full set of hypothesis charts;
-- screenshots from the original university report.
-
-Those can be useful during technical discussion, but they make the GitHub landing page feel more academic and less focused.
-
-The original report charts and exact company-specific results should not be copied into the public repository. When synthetic data is created, the R script can regenerate portfolio-safe versions of the selected charts.
+These visuals are included to make the analytical workflow easier to review without publishing restricted results.
