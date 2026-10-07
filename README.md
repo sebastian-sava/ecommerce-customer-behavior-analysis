@@ -1,10 +1,10 @@
 # E-commerce Customer Behaviour & Conversion Analysis
 
-This project looks at how browsing behaviour, device type, customer characteristics, seasonality and weather can be used to study purchase conversion in an e-commerce setting.
+This project examines how browsing behaviour, device type, customer characteristics, seasonality and weather relate to purchase conversion in an e-commerce setting.
 
-It started as a university group project built on a restricted retail database. I led most of the data preparation and cleaning and completed most of the R modelling and hypothesis testing. The written report was produced collaboratively.
+It started as a university group project using a restricted retail database. My main contribution was on the technical side: I led most of the data preparation and cleaning and completed most of the R modelling and hypothesis testing. The written report was collaborative.
 
-The public version focuses on the analytical workflow and code. The original dataset, lookup values and company-specific results are not included because they were provided under an NDA.
+Because the original retail data and project results were provided under confidentiality restrictions, the public repository does not include the source data or company-specific outputs. The SQL and R files preserve the original analytical workflow as closely as possible.
 
 ## What I worked on
 
@@ -12,8 +12,6 @@ The project had two main parts:
 
 - **SQL:** building the analysis table from event-level and customer-level data, checking joins and session counts, and resolving cases where one browsing session was linked to more than one customer ID.
 - **R:** cleaning and restructuring the exported table, handling missing demographic information with MICE, joining external weather data, checking outliers, creating behavioural variables, and testing relationships with conversion.
-
-I kept the public code close to the submitted workflow rather than redesigning the assignment from scratch.
 
 ## Analytical workflow
 
@@ -42,7 +40,7 @@ The SQL pipeline:
 5. uses window functions such as `RANK()` and `FIRST_VALUE()` to select consistent customer information;
 6. validates the final table before export to R.
 
-The original project required several intermediate checks because the source data did not behave like a perfectly clean relational model. I kept those checks in the public SQL because they show the reasoning behind the final table, not just the final query.
+Several intermediate checks are kept in the public SQL because the source data did not behave like a perfectly clean relational model.
 
 ## R analysis
 
@@ -60,20 +58,31 @@ The R workflow covers:
 - logistic regression;
 - interaction terms.
 
-The hypothesis tests examine relationships such as:
+The hypothesis tests examine relationships such as session duration and purchase behaviour, device type and conversion, repeated product-page visits and purchase behaviour, weather and conversion, seasonality, customer demographics and urbanisation.
 
-- session duration and purchase behaviour;
-- device type and conversion;
-- repeated product-page visits and purchase behaviour;
-- weather and conversion;
-- seasonality;
-- customer demographics and urbanisation.
+These are treated as observational relationships rather than causal effects.
 
-I treat these as observational relationships rather than causal effects.
+## Portfolio visuals
 
-## Why the data is not included
+The original numerical results cannot be republished, so the three charts below use **synthetic portfolio values**. They show the same types of comparisons used in the project without exposing the restricted study outputs.
 
-The original retail data was supplied for educational use under confidentiality restrictions. For that reason, this repository does **not** contain:
+### Conversion by device type
+
+![Synthetic conversion rate by device type](visuals/conversion_by_device.svg)
+
+### Conversion by season
+
+![Synthetic conversion rate by season](visuals/conversion_by_season.svg)
+
+### Purchase rate by short-window revisit behaviour
+
+![Synthetic purchase rate by short-window revisit behaviour](visuals/purchase_rate_by_short_window_visits.svg)
+
+The values behind these charts are stored in `data/synthetic_visual_values.csv`. They are illustrative only and should not be read as the original project findings.
+
+## Why the original data is not included
+
+The retail data was supplied for educational use under confidentiality restrictions. This repository therefore does **not** contain:
 
 - the original CSV export;
 - the original database tables;
@@ -81,21 +90,17 @@ The original retail data was supplied for educational use under confidentiality 
 - the original assignment reports;
 - company-specific statistical outputs.
 
-The R script therefore documents the original workflow but is not fully reproducible from this public repository alone.
-
-A fully reproducible public version would require a separately generated synthetic dataset with the same schema and analytical structure.
+The R script documents the original workflow but cannot be run end-to-end without the restricted files.
 
 ## Data-quality issues that mattered
 
-A useful part of this project was dealing with problems that were easy to miss if I only focused on modelling:
+A useful part of the project was dealing with problems that were easy to miss if the focus stayed only on modelling:
 
 - some sessions were associated with more than one customer ID;
 - some demographic variables were missing;
 - cart abandonment had to be derived from event behaviour rather than observed directly;
-- customer tracking was not designed to capture all possible device switching;
+- customer tracking did not capture every possible device-switching path;
 - external weather data had to be aligned to browsing dates before modelling.
-
-These limitations are part of the analysis rather than something I would hide from the results.
 
 ## Repository structure
 
@@ -105,10 +110,15 @@ ecommerce-customer-behavior-analysis/
 ├── sql/
 │   └── 01_build_analysis_table.sql
 ├── analysis/
-│   └── customer_behavior_analysis.R
+│   ├── customer_behavior_analysis.R
+│   └── 02_generate_synthetic_visuals.R
 ├── data/
-│   └── README.md
+│   ├── README.md
+│   └── synthetic_visual_values.csv
 ├── visuals/
+│   ├── conversion_by_device.svg
+│   ├── conversion_by_season.svg
+│   ├── purchase_rate_by_short_window_visits.svg
 │   └── README.md
 ├── R-packages.txt
 └── .gitignore
@@ -122,8 +132,8 @@ Joins, temporary tables, `CASE`, aggregation, `COALESCE`, window functions, rank
 **R**  
 `dplyr`, `ggplot2`, `mice`, `caret`, `RColorBrewer` and `scales`.
 
-## Portfolio note
+## Project note
 
-This was originally a group university project. My contribution was concentrated on the technical side: I led most of the data preparation and cleaning and completed most of the R modelling and hypothesis testing. Report writing was collaborative.
+This was originally a group university project. My contribution was concentrated on the technical work: most of the data preparation and cleaning, and most of the R modelling and hypothesis testing.
 
-For the public portfolio version, I cleaned the code and documentation while keeping the original analytical approach recognisable.
+The public repository was assembled later from the original project materials. File paths, formatting and documentation were edited for portfolio use, while the original analytical logic was kept recognisable.
