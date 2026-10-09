@@ -1,0 +1,10 @@
+chart,category,rate
+conversion_by_device,Mobile,0.052
+conversion_by_device,Desktop,0.064
+conversion_by_device,Tablet,0.057
+conversion_by_season,Spring,0.061
+conversion_by_season,Summer,0.054
+conversion_by_season,Autumn,0.058
+conversion_by_season,Winter,0.056
+purchase_rate_by_short_window_visits,No repeated visit,0.058
+purchase_rate_by_short_window_visits,Repeated visits within 180 sec,0.039
